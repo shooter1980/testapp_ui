@@ -12,7 +12,7 @@ import {Component} from '@angular/core';
     price: number = null;
     count: number = null;
 
-    constructor(private dataService: DataService){}
+    constructor(private dataService:  DataService){}
 
     addItem(purchase: string, price: number, count: number): void {
         this.dataService.addItem(purchase, price, count);
