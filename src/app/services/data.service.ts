@@ -1,9 +1,9 @@
-import{Item} from './item'
-import {Injectable} from '@angular/core';
-import {LogService} from './log.service';
-import { HttpClient, HttpParams} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import { Item } from './item'
+import { Injectable } from '@angular/core';
+import { LogService } from './log.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 
 @Injectable()
@@ -34,7 +34,8 @@ export class DataService{
       .set('price', item.price.toString())
       .set('count', item.count.toString())
       .set('sum', item.sum.toString());
-      return this.http.get('http://localhost:3000/api/add_item', {params:params}).toPromise();
+      return this.http.get('http://localhost:3000/api/add_item', {params:params})
+        .toPromise().catch(reason => {});
     }
   }
 
@@ -45,8 +46,14 @@ export class DataService{
         console.info(element._id);
         const params: HttpParams = new HttpParams()
           .set('_id', element._id);
-        this.http.get('http://localhost:3000/api/del_item', {params:params}).toPromise();
+        this.http.get('http://localhost:3000/api/del_item', {params:params})
+          .toPromise().catch(reason => {});
       }
     });
+  }
+
+  public writeFile(){
+    return this.http.get('http://localhost:3000/api/write')
+      .toPromise().catch(reason => {});
   }
 }

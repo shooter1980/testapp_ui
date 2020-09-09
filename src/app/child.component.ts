@@ -14,12 +14,16 @@ import {Component} from '@angular/core';
 
     constructor(private dataService: DataService){}
 
-
     addItem(purchase: string, price: number, count: number): void {
         this.dataService.addItem(purchase, price, count);
         this.refresh();
     }
-    refresh() {
-        window.location.reload();
+
+    startDownload(){
+      this.dataService.writeFile();
+
     }
+      refresh() {
+          window.location.reload();
+      }
   }

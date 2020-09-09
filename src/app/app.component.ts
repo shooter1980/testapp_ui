@@ -23,12 +23,7 @@ export class AppComponent implements OnInit{
     this.dataService.getData().subscribe(data => this.items=data,
       error => {this.error = error.message; console.log(error);});
   }
-
-  addItem(purchase: string, price: number, count: number): void {
-     this.dataService.addItem(purchase, price, count);
-     this.refresh();
-  }
-
+  
   delItem(): void {
      this.dataService.delItem(this.items);
      this.refresh();
