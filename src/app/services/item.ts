@@ -11,9 +11,6 @@ export class Item {
         this.purchase = purchase;
         this.price = price;
         this.count = count;
-		    this.flag = false;
         this.sum = price * count;
     }
-
-
 }
