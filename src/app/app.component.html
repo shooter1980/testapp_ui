@@ -7,31 +7,26 @@
   </header>
   <div class="content-container">
     <div class="content-area">
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Select</th>
-          <th>Purchase</th>
-          <th>Price</th>
-          <th>Count</th>
-          <th>Sum</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let item of items">
-          <td><input type="checkbox" [(ngModel)]="item.flag" /></td>
-          <td>{{item.purchase}}</td>
-          <td>{{item.price}}</td>
-          <td>{{item.count}}</td>
-          <td>{{item.sum}}</td>
-        </tr>
-        </tbody>
-      </table>
+      <clr-datagrid>
+          <clr-dg-column>Select</clr-dg-column>
+          <clr-dg-column>Purchase</clr-dg-column>
+          <clr-dg-column>Price</clr-dg-column>
+          <clr-dg-column>Count</clr-dg-column>
+          <clr-dg-column>Sum</clr-dg-column>
+
+        <clr-dg-row *ngFor="let item of items">
+          <clr-dg-cell><input type="checkbox" [(ngModel)]="item.flag" /></clr-dg-cell>
+          <clr-dg-cell>{{item.purchase}}</clr-dg-cell>
+          <clr-dg-cell>{{item.price}}</clr-dg-cell>
+          <clr-dg-cell>{{item.count}}</clr-dg-cell>
+          <clr-dg-cell>{{item.sum}}</clr-dg-cell>
+        </clr-dg-row>
+      </clr-datagrid>
       <button class="btn btn-warning " (click)="delItem()">delete item</button>
     </div>
     <nav class="sidenav">
-     <child-comp></child-comp>
+      <child-comp></child-comp>
     </nav>
   </div>
 </div>
-<router-outlet></router-outlet>
+

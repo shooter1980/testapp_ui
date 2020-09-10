@@ -1,5 +1,6 @@
 import { DataService } from './services/data.service';
-import {Component} from '@angular/core';
+import { Component , Output, EventEmitter } from '@angular/core';
+import{ Item } from './services/item';
 
 @Component({
   selector: 'child-comp',
