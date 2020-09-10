@@ -7,6 +7,9 @@
   </header>
   <div class="content-container">
     <div class="content-area">
+      <button class="btn btn-icon btn-primary" aria-label="settings" (click)="refresh()">
+        <clr-icon shape="cog"></clr-icon>
+        refresh</button>
       <clr-datagrid>
           <clr-dg-column>Select</clr-dg-column>
           <clr-dg-column>Purchase</clr-dg-column>
@@ -22,7 +25,9 @@
           <clr-dg-cell>{{item.sum}}</clr-dg-cell>
         </clr-dg-row>
       </clr-datagrid>
-      <button class="btn btn-warning " (click)="delItem()">delete item</button>
+      <button type="button" class="btn btn-warning"  (click)="delItem()">
+
+        delete item</button>
     </div>
     <nav class="sidenav">
       <child-comp></child-comp>

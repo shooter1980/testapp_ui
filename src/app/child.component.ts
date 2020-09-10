@@ -17,14 +17,10 @@ import{ Item } from './services/item';
 
     addItem(purchase: string, price: number, count: number): void {
         this.dataService.addItem(purchase, price, count);
-        this.refresh();
     }
 
     startDownload(){
       this.dataService.writeFile();
 
     }
-      refresh() {
-          window.location.reload();
-      }
   }
