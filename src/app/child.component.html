@@ -1,14 +1,14 @@
 <div class="form-inline">
   <div class="clr-form-group">
     <div class="col-md-8">
-      <input class="clr-form-control" [(ngModel)]="purchase" placeholder="purchase" label="purchase"/>
+      <input class="clr-form-control" [(ngModel)]="purchase" #purchase_item="ngModel" label="purchase" required/>
     </div>
     <div class="col-sm-8">
-      <input type="number" class="clr-form-control" [(ngModel)]="price" placeholder="price" label="price"/>
+      <input type="number" class="clr-form-control" [(ngModel)]="price" #price_item="ngModel" label="price" required/>
     </div>
     <div class="col-md-8">
-      <input type="number" class="clr-form-control" [(ngModel)]="count" placeholder="count" label="count"/>
-      <button class="btn btn-success" (click)="addItem(purchase, price, count)">add item</button>
+      <input type="number" class="clr-form-control" [(ngModel)]="count" #count_item="ngModel" label="count" required/>
+      <button button [disabled]="purchase_item.invalid || price_item.invalid || count_item.invalide" class="btn btn-success" (click)="addItem(purchase, price, count)">add item</button>
       <button class="btn btn-outline" (click)="startDownload()"> write to csv file</button>
     </div>
   </div>

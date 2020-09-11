@@ -9,7 +9,8 @@
     <div class="content-area">
       <button class="btn btn-icon btn-primary" aria-label="settings" (click)="refresh()">
         <clr-icon shape="cog"></clr-icon>
-        refresh</button>
+        refresh
+      </button>
       <clr-datagrid>
           <clr-dg-column>Select</clr-dg-column>
           <clr-dg-column>Purchase</clr-dg-column>
@@ -17,16 +18,15 @@
           <clr-dg-column>Count</clr-dg-column>
           <clr-dg-column>Sum</clr-dg-column>
 
-        <clr-dg-row *ngFor="let item of items">
-          <clr-dg-cell><input type="checkbox" [(ngModel)]="item.flag" /></clr-dg-cell>
+        <clr-dg-row *ngFor="let item of items" >
+          <clr-dg-cell><input type="checkbox" [(ngModel)]="item.flag" (change) = "refreshCheck()"/></clr-dg-cell>
           <clr-dg-cell>{{item.purchase}}</clr-dg-cell>
           <clr-dg-cell>{{item.price}}</clr-dg-cell>
           <clr-dg-cell>{{item.count}}</clr-dg-cell>
           <clr-dg-cell>{{item.sum}}</clr-dg-cell>
         </clr-dg-row>
       </clr-datagrid>
-      <button type="button" class="btn btn-warning"  (click)="delItem()">
-
+      <button type="button" [disabled]="!checked" class="btn btn-warning"  (click)="delItem()">
         delete item</button>
     </div>
     <nav class="sidenav">

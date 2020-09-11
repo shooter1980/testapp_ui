@@ -11,12 +11,22 @@ export class AppComponent implements OnInit{
 
   items: Item[] = [];
   error:any;
-
+  checked: boolean = false;
 
   constructor(private dataService: DataService){}
 
   ngOnInit(){
+    this.checked =false;
     this.refresh();
+  }
+
+  refreshCheck(){
+    this.checked =false;
+    for(let item of this.items){
+      if(item.flag===true){
+        this.checked = true;
+      }
+    }
   }
 
   refresh():void{
