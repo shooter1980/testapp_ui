@@ -1,6 +1,5 @@
 export class Item {
     _id? : string;
-	  flag : boolean;
     purchase: string;
     price: number;
     count: number;

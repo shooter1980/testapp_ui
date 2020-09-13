@@ -39,11 +39,10 @@ export class DataService{
           });
     }
   }
-  
+
   public delItem(items : Item[]) {
     this.logService.write("del item");
     items.forEach(element => {
-      if(element.flag===true){
         console.info(element._id);
         this.http.delete('http://localhost:3000/api/del_item' +'/'+element._id)
           .subscribe(
@@ -51,7 +50,6 @@ export class DataService{
               if(err) console.info(err);
               this.logService.write("Success");
             });
-      }
     });
   }
 

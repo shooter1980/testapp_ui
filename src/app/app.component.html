@@ -1,6 +1,8 @@
 <div class="main-container">
   <div class="alert alert-app-level">
-    {{error}}
+          <span class="alert-text">
+                    {{error}}
+          </span>
   </div>
   <header class="header header-6">
     Test App
@@ -11,26 +13,25 @@
         <clr-icon shape="cog"></clr-icon>
         refresh
       </button>
-      <clr-datagrid>
-          <clr-dg-column>Select</clr-dg-column>
-          <clr-dg-column>Purchase</clr-dg-column>
-          <clr-dg-column>Price</clr-dg-column>
-          <clr-dg-column>Count</clr-dg-column>
-          <clr-dg-column>Sum</clr-dg-column>
+      <clr-datagrid [(clrDgSelected)]="selected" [clrDgRowSelection]="true">
+          <clr-dg-column [clrDgField]="'purchase'">Purchase</clr-dg-column>
+          <clr-dg-column [clrDgField]="'price'">Price</clr-dg-column>
+          <clr-dg-column [clrDgField]="'count'" [clrDgSortBy]="itemCountComparator">Count</clr-dg-column>
+          <clr-dg-column [clrDgField]="'sum'" [clrDgSortBy]="itemSumComparator">Sum</clr-dg-column>
 
-        <clr-dg-row *ngFor="let item of items" >
-          <clr-dg-cell><input type="checkbox" [(ngModel)]="item.flag" (change) = "refreshCheck()"/></clr-dg-cell>
+        <clr-dg-row *clrDgItems="let item of items" [clrDgItem]="item">
           <clr-dg-cell>{{item.purchase}}</clr-dg-cell>
           <clr-dg-cell>{{item.price}}</clr-dg-cell>
           <clr-dg-cell>{{item.count}}</clr-dg-cell>
           <clr-dg-cell>{{item.sum}}</clr-dg-cell>
         </clr-dg-row>
+        <clr-dg-footer>{{items.length}} items</clr-dg-footer>
       </clr-datagrid>
       <button type="button" [disabled]="!checked" class="btn btn-warning"  (click)="delItem()">
         delete item</button>
     </div>
     <nav class="sidenav">
-      <child-comp ></child-comp>
+      <child-comp></child-comp>
     </nav>
   </div>
 </div>
