@@ -13,10 +13,10 @@ export class AppComponent implements OnInit{
   error:any;
   checked: boolean = false;
 
+
   constructor(private dataService: DataService){}
 
   ngOnInit(){
-    this.checked =false;
     this.refresh();
   }
 
@@ -28,6 +28,7 @@ export class AppComponent implements OnInit{
       }
     }
   }
+
 
   refresh():void{
     this.dataService.getData().subscribe(data => this.items=data,

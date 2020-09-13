@@ -13,6 +13,8 @@ import{ Item } from './services/item';
     price: number = null;
     count: number = null;
 
+    
+
     constructor(private dataService:  DataService){}
 
     addItem(purchase: string, price: number, count: number): void {
@@ -21,6 +23,5 @@ import{ Item } from './services/item';
 
     startDownload(){
       this.dataService.writeFile();
-
     }
   }
