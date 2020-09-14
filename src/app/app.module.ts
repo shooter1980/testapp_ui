@@ -7,9 +7,9 @@ import { AppComponent } from './app.component';
 import { ChildComponent } from './child.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule }   from '@angular/forms';
 import { DataService } from "./services/data.service";
 import { LogService } from "./services/log.service";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ import { LogService } from "./services/log.service";
     ClarityModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule, 
     HttpClientModule
   ],
   providers: [DataService, LogService],
