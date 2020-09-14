@@ -14,10 +14,22 @@
         refresh
       </button>
       <clr-datagrid [(clrDgSelected)]="selected" [clrDgRowSelection]="true">
-          <clr-dg-column [clrDgField]="'purchase'">Purchase</clr-dg-column>
-          <clr-dg-column [clrDgField]="'price'">Price</clr-dg-column>
-          <clr-dg-column [clrDgField]="'count'" [clrDgSortBy]="itemCountComparator">Count</clr-dg-column>
-          <clr-dg-column [clrDgField]="'sum'" [clrDgSortBy]="itemSumComparator">Sum</clr-dg-column>
+          <clr-dg-column [clrDgField]="'purchase'">
+            <ng-container *clrDgHideableColumn="{hidden: false}">
+            Purchase
+          </ng-container></clr-dg-column>
+          <clr-dg-column [clrDgField]="'price'">
+            <ng-container *clrDgHideableColumn="{hidden: false}">
+            Price
+          </ng-container></clr-dg-column>
+          <clr-dg-column [clrDgField]="'count'" [clrDgSortBy]="itemCountComparator">
+            <ng-container *clrDgHideableColumn="{hidden: false}">
+            Count
+          </ng-container></clr-dg-column>
+          <clr-dg-column [clrDgField]="'sum'" [clrDgSortBy]="itemSumComparator">
+            <ng-container *clrDgHideableColumn="{hidden: false}">
+            Sum
+          </ng-container></clr-dg-column>
 
         <clr-dg-row *clrDgItems="let item of items" [clrDgItem]="item">
           <clr-dg-cell>{{item.purchase}}</clr-dg-cell>
