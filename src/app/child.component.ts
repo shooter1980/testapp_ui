@@ -12,13 +12,11 @@ import{ Item } from './services/item';
     price: number ;
     count: number ;
 
-    @Input() items: Item[];
 
     constructor(private dataService:  DataService){}
 
     addItem(purchase: string, price: number, count: number): void {
         this.dataService.addItem(purchase, price, count);
-        this.items.push(new Item(purchase, price, count));
     }
 
     startDownload(){

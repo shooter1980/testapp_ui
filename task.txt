@@ -1,0 +1,27 @@
+
+Your task is the following:
+
+Your app should is an Angular application and NodeJS  API server.
+Data storage is a file system and a MongoDB database.
+
+The app can be written using the latest angular (suggestion clarity.design or ng-bootstrap components, angular ).
+
+The app should have the following functionality:
+The page with a form that has at least 3 fields, table/data grid, save data to file a button/link.
+
+The form has a save button and reset buttons. Save button save data to MongoDB using API service on NodeJS. Saved data rendered in
+data grid/ table below
+
+Data grid/table load data from MongoDB via the API server.
+
+Save data to file call API server service that reads data from MongoDB and save it to file using streaming NodeJS API.
+
+
+The requirements:
+UI should have at least 2 angular components.
+The saved file should a tab-separated CSV file with headers.
+
+Bonus points for the additional functionality of data grid (filters, etc)
+
+
+Best regards
