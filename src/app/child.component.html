@@ -1,17 +1,17 @@
 <form clrForm [formGroup]="addForm" clrLayout="vertical" >
   <clr-input-container>
     <label>Purchase</label>
-    <input  clrInput type="text" formControlName="inputControl" [(ngModel)]="purchase" required />
+    <input  clrInput type="text" formControlName="purchase"  required />
     <clr-control-error>We need purchase name for legal compliance</clr-control-error>
   </clr-input-container>
   <clr-input-container>
     <label>Price</label>
-    <input  clrInput type="number" formControlName="inputControl" [(ngModel)]="price" required/>
+    <input  clrInput type="number" formControlName="price"  required/>
     <clr-control-error>We need price of purchase for legal compliance</clr-control-error>
   </clr-input-container>
   <clr-input-container>
     <label>Count</label>
-    <input  clrInput type="number" formControlName="inputControl" [(ngModel)]="count" required />
+    <input  clrInput type="number" formControlName="count"  required />
     <clr-control-error>We need count of purchase for legal compliance</clr-control-error>
   </clr-input-container>
   <button class="btn btn-primary" type="submit" (click)="addItem(purchase, price, count)">Submit</button>
