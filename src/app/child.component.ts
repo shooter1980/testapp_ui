@@ -26,12 +26,9 @@ import { ClrForm } from '@clr/angular';
     constructor(private dataService:  DataService){}
 
     addItem(purchase: string, price: number, count: number): void {
-      if (this.addForm.invalid) {
-        this.clrForm.markAsTouched();
-      } else {
+      if (!this.addForm.invalid) {
         this.dataService.addItem(purchase, price, count);
       }
-
     }
 
     startDownload(){

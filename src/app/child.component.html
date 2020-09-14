@@ -1,4 +1,4 @@
-<form clrForm [formGroup]="addForm" clrLayout="vertical">
+<form clrForm [formGroup]="addForm" clrLayout="vertical" >
   <clr-input-container>
     <label>Purchase</label>
     <input  clrInput type="text" formControlName="inputControl" [(ngModel)]="purchase" required />
@@ -20,4 +20,3 @@
     <button class="btn btn-outline" (click)="startDownload()"> write to csv file</button>
   </div>
 </form>
-
