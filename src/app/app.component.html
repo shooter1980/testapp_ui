@@ -10,26 +10,30 @@
   <div class="content-container">
     <div class="content-area">
       <button class="btn btn-icon btn-primary" aria-label="settings" (click)="refresh()">
-        <clr-icon shape="cog"></clr-icon>
+        <clr-icon shape="refresh"></clr-icon>
         refresh
       </button>
-      <clr-datagrid [(clrDgSelected)]="selected" [clrDgRowSelection]="true">
-          <clr-dg-column [clrDgField]="'purchase'">
+      <clr-datagrid>
+          <clr-dg-column  [clrDgField]="'purchase'" (click)="changeOrder('purchase')">
             <ng-container *clrDgHideableColumn="{hidden: false}">
-            Purchase
-          </ng-container></clr-dg-column>
-          <clr-dg-column [clrDgField]="'price'">
+              Purchase
+          </ng-container>
+          </clr-dg-column>
+          <clr-dg-column [clrDgField]="'price'" (click)="changeOrder('price')"[clrDgColType]="'number'">
             <ng-container *clrDgHideableColumn="{hidden: false}">
             Price
-          </ng-container></clr-dg-column>
-          <clr-dg-column [clrDgField]="'count'" [clrDgSortBy]="itemCountComparator">
+          </ng-container>
+          </clr-dg-column>
+          <clr-dg-column [clrDgField]="'count'" [clrDgColType]="'number'" (click)="changeOrder('count')">
             <ng-container *clrDgHideableColumn="{hidden: false}">
             Count
-          </ng-container></clr-dg-column>
-          <clr-dg-column [clrDgField]="'sum'" [clrDgSortBy]="itemSumComparator">
+          </ng-container>
+          </clr-dg-column>
+          <clr-dg-column [clrDgField]="'sum'" [clrDgColType]="'number'" (click)="changeOrder('sum')">
             <ng-container *clrDgHideableColumn="{hidden: false}">
             Sum
-          </ng-container></clr-dg-column>
+          </ng-container>
+          </clr-dg-column>
 
         <clr-dg-row *clrDgItems="let item of items" [clrDgItem]="item">
           <clr-dg-cell>{{item.purchase}}</clr-dg-cell>

@@ -14,7 +14,7 @@
     <input  clrInput type="number" formControlName="count"  required />
     <clr-control-error>We need count of purchase for legal compliance</clr-control-error>
   </clr-input-container>
-  <button class="btn btn-primary" type="submit" (click)="addItem(purchase, price, count)">Submit</button>
+  <button class="btn btn-primary" type="submit" (click)="addItem()">Submit</button>
   <button class="btn" type="button" (click)="resetForm()">Reset</button>
   <div>
     <button class="btn btn-outline" (click)="startDownload()"> write to csv file</button>

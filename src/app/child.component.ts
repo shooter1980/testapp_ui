@@ -10,11 +10,7 @@ import { ClrForm } from '@clr/angular';
 })
 
   export class ChildComponent {
-    purchase: string;
-    price: number ;
-    count: number ;
       addForm = new FormGroup({
-        // inputControl: new FormControl('', Validators.required),
         purchase: new FormControl('', Validators.required),
         price: new FormControl('', Validators.required),
         count: new FormControl('', Validators.required),
@@ -27,7 +23,7 @@ import { ClrForm } from '@clr/angular';
 
     constructor(private dataService:  DataService){}
 
-    addItem(purchase: string, price: number, count: number): void {
+    addItem(): void {// purchase: string, price: number, count: number
       if (!this.addForm.invalid) {
         this.dataService.addItem(this.addForm.get("purchase").value, this.addForm.get("price").value, this.addForm.get("count").value);
       }
