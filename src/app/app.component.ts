@@ -1,4 +1,4 @@
-  import { Component} from '@angular/core';
+  import { Component } from '@angular/core';
   import{ Item } from './services/item';
   import { DataService } from './services/data.service';
   import {ClrDatagridStateInterface} from "@clr/angular";
@@ -19,8 +19,20 @@ export class AppComponent {
   field : string = "purchase";
   order : number = 1;
   loading: boolean = true;
+  // filters: { [prop: string]: any[] } = {};
+  filters : any[] ;
 
   refreshDataGrid(state: ClrDatagridStateInterface) {
+    if (state.filters) {
+      this.filters = state.filters;
+      // for (const filter of state.filters) {
+      //   let { property, value } = <{ property: string; value: any[] }>filter;
+      //   this.filters[property] = value;
+      //   console.info(this.filters);
+      // }
+    }else{
+      this.filters = undefined;
+    }
     if(state.sort){
       this.field = state.sort.by.toString();
       if(state.sort.reverse){
@@ -44,7 +56,7 @@ export class AppComponent {
 
   refresh():void{
     // this.loading=true;
-     this.dataService.getData(this.field, this.order).subscribe(data =>
+     this.dataService.getData(this.field, this.order, this.filters).subscribe(data =>
        {
          this.items=data;
          this.loading = false;

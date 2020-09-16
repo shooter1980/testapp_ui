@@ -12,9 +12,14 @@ export class DataService{
 
   constructor(private logService: LogService, private http: HttpClient){}
 
-  public getData(field : string, order: number): Observable<Item[]> {
+  public getData(field : string, order: number, filters:  any[]): Observable<Item[]> {
+    let fil: string = "{}";
+    if(filters){
+      fil = JSON.stringify(filters);
+      console.info("filters query param : "+fil);
+    }
         this.logService.write("get items");
-        return this.http.get<Item[]>('http://localhost:3000/api/items/'+field+'&'+order).pipe(map(res => {
+        return this.http.get<Item[]>('http://localhost:3000/api/items/'+field+'&'+order+'&'+fil).pipe(map(res => {
           return res.map(item => {
             return new Item(
               item.purchase,
