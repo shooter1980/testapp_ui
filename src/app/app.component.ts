@@ -2,6 +2,7 @@
   import{ Item } from './services/item';
   import { DataService } from './services/data.service';
   import { Subject } from 'rxjs';
+  import {ClrDatagridStateInterface} from "@clr/angular";
 
 
 
@@ -18,40 +19,45 @@ export class AppComponent implements OnInit{
   checked: boolean = false;
   field : string = "purchase";
   order : number = 1;
+  loading: boolean = true;
 
+  refreshDataGrid(state: ClrDatagridStateInterface) {
+    if(state.sort){
+      this.field = state.sort.by.toString();
+      if(state.sort.reverse){
+        this.order = -1;
+      }else{
+        this.order = 1;
+      }
+    }
+    this.refresh();
+  }
+
+  selectionChanged(state : ClrDatagridStateInterface){
+    this.checked =false;
+    if(this.selected.length>0){
+      this.checked = true;
+    }
+  }
 
   constructor(private dataService: DataService){}
 
-  changeOrder(field: string){
-    if(this.order==1){
-      this.order=-1;
-    }else{
-      this.order=1;
-    }
-    this.field=field;
-    this.refresh();
-  }
-
-
   ngOnInit(){
-    this.refresh();
+    // this.refresh();
   }
-
-  ngDoCheck(){
-    this.refreshCheck();
-  }
-
-  refreshCheck(){
-    this.checked =false;
-      if(this.selected.length>0){
-        this.checked = true;
-      }
-  }
-
 
   refresh():void{
-    this.dataService.getData(this.field, this.order).subscribe(data => this.items=data,
-      error => {this.error = error.message; console.log(error);});
+    // this.loading=true;
+     this.dataService.getData(this.field, this.order).subscribe(data =>
+       {
+         this.items=data;
+         this.loading = false;
+     },
+      error => {
+       this.error = error.message;
+       console.log(error);
+        this.loading = true;
+     });
   }
 
   delItem(): void {

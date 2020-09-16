@@ -5,7 +5,10 @@
           </span>
   </div>
   <header class="header header-6">
-    Test App
+    <a class="nav-link">
+      <clr-icon shape="home" size="40"></clr-icon>
+      <span class="title">Project Angular&Clarity test app</span>
+    </a>
   </header>
   <div class="content-container">
     <div class="content-area">
@@ -13,23 +16,24 @@
         <clr-icon shape="refresh"></clr-icon>
         refresh
       </button>
-      <clr-datagrid>
-          <clr-dg-column  [clrDgField]="'purchase'" (click)="changeOrder('purchase')">
+      <clr-datagrid (clrDgRefresh)="refreshDataGrid($event)" [clrDgLoading]="loading"
+                    [(clrDgSelected)]="selected" (clrDgSelectedChange)="selectionChanged($event)">
+          <clr-dg-column  [clrDgField]="'purchase'" >
             <ng-container *clrDgHideableColumn="{hidden: false}">
               Purchase
           </ng-container>
           </clr-dg-column>
-          <clr-dg-column [clrDgField]="'price'" (click)="changeOrder('price')"[clrDgColType]="'number'">
+          <clr-dg-column [clrDgField]="'price'" [clrDgColType]="'number'">
             <ng-container *clrDgHideableColumn="{hidden: false}">
             Price
           </ng-container>
           </clr-dg-column>
-          <clr-dg-column [clrDgField]="'count'" [clrDgColType]="'number'" (click)="changeOrder('count')">
+          <clr-dg-column [clrDgField]="'count'" [clrDgColType]="'number'" >
             <ng-container *clrDgHideableColumn="{hidden: false}">
             Count
           </ng-container>
           </clr-dg-column>
-          <clr-dg-column [clrDgField]="'sum'" [clrDgColType]="'number'" (click)="changeOrder('sum')">
+          <clr-dg-column [clrDgField]="'sum'" [clrDgColType]="'number'" >
             <ng-container *clrDgHideableColumn="{hidden: false}">
             Sum
           </ng-container>
