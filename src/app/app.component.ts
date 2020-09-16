@@ -1,7 +1,6 @@
-  import { Component, OnInit, DoCheck } from '@angular/core';
+  import { Component} from '@angular/core';
   import{ Item } from './services/item';
   import { DataService } from './services/data.service';
-  import { Subject } from 'rxjs';
   import {ClrDatagridStateInterface} from "@clr/angular";
 
 
@@ -11,7 +10,7 @@
   templateUrl: './app.component.html'
 
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
 
   items: Item[] = [];
   selected: Item[] = [];
@@ -42,9 +41,6 @@ export class AppComponent implements OnInit{
 
   constructor(private dataService: DataService){}
 
-  ngOnInit(){
-    // this.refresh();
-  }
 
   refresh():void{
     // this.loading=true;
