@@ -16,30 +16,15 @@ export class AppComponent {
   selected: Item[] = [];
   error:any;
   checked: boolean = false;
-  field : string = "purchase";
-  order : number = 1;
   loading: boolean = true;
-  // filters: { [prop: string]: any[] } = {};
-  filters : any[] ;
+  state: ClrDatagridStateInterface;
 
-  refreshDataGrid(state: ClrDatagridStateInterface) {
-    if (state.filters) {
-      this.filters = state.filters;
-      // for (const filter of state.filters) {
-      //   let { property, value } = <{ property: string; value: any[] }>filter;
-      //   this.filters[property] = value;
-      //   console.info(this.filters);
-      // }
+   refreshDataGrid(state: ClrDatagridStateInterface) {
+     this.loading = true;
+    if (state) {
+      this.state = state;
     }else{
-      this.filters = undefined;
-    }
-    if(state.sort){
-      this.field = state.sort.by.toString();
-      if(state.sort.reverse){
-        this.order = -1;
-      }else{
-        this.order = 1;
-      }
+      this.state = undefined;
     }
     this.refresh();
   }
@@ -55,8 +40,7 @@ export class AppComponent {
 
 
   refresh():void{
-    // this.loading=true;
-     this.dataService.getData(this.field, this.order, this.filters).subscribe(data =>
+     this.dataService.getData(this.state).subscribe(data =>
        {
          this.items=data;
          this.loading = false;

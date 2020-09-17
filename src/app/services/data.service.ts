@@ -2,7 +2,7 @@ import { Item } from './item'
 import { Injectable } from '@angular/core';
 import { LogService } from './log.service';
 import { HttpClient, HttpParams , HttpHeaders} from '@angular/common/http';
-
+import {ClrDatagridStateInterface} from "@clr/angular";
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -12,14 +12,9 @@ export class DataService{
 
   constructor(private logService: LogService, private http: HttpClient){}
 
-  public getData(field : string, order: number, filters:  any[]): Observable<Item[]> {
-    let fil: string = "{}";
-    if(filters){
-      fil = JSON.stringify(filters);
-      console.info("filters query param : "+fil);
-    }
+  public getData(state: ClrDatagridStateInterface): Observable<Item[]> {
         this.logService.write("get items");
-        return this.http.get<Item[]>('http://localhost:3000/api/items/'+field+'&'+order+'&'+fil).pipe(map(res => {
+        return this.http.post<Item[]>('http://localhost:3000/api/items/', state).pipe(map(res => {
           return res.map(item => {
             return new Item(
               item.purchase,
